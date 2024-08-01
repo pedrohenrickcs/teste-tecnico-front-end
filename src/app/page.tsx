@@ -34,7 +34,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between">
       <Header />
       {/* <SearchUser /> */}
-      <div className="flex my-6">
+      <div className="flex my-6 px-6 flex-col md:flex-row">
         <Profile />
         <Repos data={data} />
       </div>
