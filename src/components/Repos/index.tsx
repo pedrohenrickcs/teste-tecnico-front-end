@@ -1,6 +1,6 @@
 import { RepoProps } from '@/types/Repos'
 
-export const Repositorios = ({ data }: RepoProps) => {
+export const Repos = ({ data }: RepoProps) => {
   return (
     <ul className="space-y-4">
       {data.map((repo) => (

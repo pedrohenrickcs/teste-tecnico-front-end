@@ -14,6 +14,7 @@ const config: Config = {
       'gray-neutral': '#616161',
       'gray-dark': '#4E4E4E',
       'white-background': '#FFFFFF',
+      'white-text': '#FFFFFF',
       'white-background-matte': '#F3F3F5',
       'border-and-line': '#E3E6E9',
       placeholder: '#8C8C8C',
