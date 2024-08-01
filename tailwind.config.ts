@@ -22,6 +22,10 @@ const config: Config = {
       warning: '#FFB22B',
       danger: '#FC4B6C',
     },
+    fontSize: {
+      base: '1rem',
+      xl: '1.313rem',
+    },
   },
   plugins: [],
 }

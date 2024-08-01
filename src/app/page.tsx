@@ -32,7 +32,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between">
       <Header />
       <SearchUser />
-      <Repos data={data} />
+      {/* <Repos data={data} /> */}
     </main>
   )
 }
