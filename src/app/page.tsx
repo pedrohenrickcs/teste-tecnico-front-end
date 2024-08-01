@@ -1,12 +1,13 @@
 'use client'
 
-import { Repos } from '@/components/Repos'
 import { useState, useEffect } from 'react'
 import { getRepos } from '../services/repos'
 import { ContentRepo } from '@/types/Repos'
-import SearchUser from '@/components/SearchUser'
+// import SearchUser from '@/components/SearchUser'
 import Header from '@/components/layout/Header'
 import Loading from '@/components/common/Loading'
+import { Repos } from '@/components/ContentSection/Repos'
+import { Profile } from '@/components/ContentSection/Profile'
 
 export default function Home() {
   const [data, setData] = useState<ContentRepo[]>([])
@@ -33,7 +34,10 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between">
       <Header />
       {/* <SearchUser /> */}
-      <Repos data={data} />
+      <div className="flex my-6">
+        <Profile />
+        <Repos data={data} />
+      </div>
     </main>
   )
 }
