@@ -1,7 +1,16 @@
 import Icon from '@/components/icons/icons'
 import { IconsEnum } from '@/enums/IconsEnum'
+import { ChangeEvent } from 'react'
 
-const Header = () => {
+export type HeaderProps = {
+  setUser: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Header: React.FC<HeaderProps> = ({ setUser }) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUser(e.target.value)
+  }
+
   return (
     <header className="w-full">
       <div className="border-b border-border-and-line flex justify-end md:justify-between">
@@ -9,6 +18,7 @@ const Header = () => {
           <input
             placeholder="Buscar usuário"
             className=" border border-border-and-line text-placeholder rounded b-width w-full md:w-full p-2 m-5 focus:outline-none"
+            onChange={handleInputChange}
           />
           <Icon
             name={IconsEnum.Search}
