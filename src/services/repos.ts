@@ -6,7 +6,7 @@ export const getRepos = async (username: string) => {
   try {
     const response = await axios.get(apiUrl, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token ${process.env.GITHUB_TOKEN}`,
       },
     })
     return response.data
