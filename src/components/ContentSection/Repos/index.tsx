@@ -1,7 +1,11 @@
 import { RepoProps } from '@/types/Repos'
 
 export const Repos = ({ data }: RepoProps) => {
-  console.log('data', data)
+  const languageColors: { [key: string]: string } = {
+    TypeScript: '#3276C6',
+    JavaScript: '#F5DA79',
+    HTML: '#FF4343',
+  }
 
   return (
     <div className="w-full md:w-1/2">
@@ -9,25 +13,33 @@ export const Repos = ({ data }: RepoProps) => {
         Repositórios
       </h2>
       <ul className="space-y-4">
-        {data.map((repo) => (
-          <a
-            href={repo.html_url}
-            key={repo.id}
-            className="flex w-full text-lg font-semibold"
-            target="_blank"
-          >
-            <li className="w-full border border-border-and-line text-gray-neutral p-4 rounded">
-              {repo.name}
-              <p className="text-sm font-normal text-placeholder">
-                {repo.description}
-              </p>
-              <p className="pt-4 text-xs font-normal">
-                <span>{repo.language}</span>
-                <span className="pl-6">{repo.pushed_at}</span>
-              </p>
-            </li>
-          </a>
-        ))}
+        {data.map((repo) => {
+          const color = languageColors[repo.language] || '#CCCCCC'
+
+          return (
+            <a
+              href={repo.html_url}
+              key={repo.id}
+              className="flex w-full text-lg font-semibold"
+              target="_blank"
+            >
+              <li className="w-full border border-border-and-line text-gray-neutral p-4 rounded">
+                {repo.name}
+                <p className="text-sm font-normal text-placeholder">
+                  {repo.description}
+                </p>
+                <p className="pt-4 text-xs font-normal">
+                  <span
+                    className="w-4 h-4 inline-block align-middle rounded-2xl mr-2"
+                    style={{ backgroundColor: color }}
+                  ></span>
+                  <span>{repo.language}</span>
+                  <span className="pl-6">{repo.pushed_at}</span>
+                </p>
+              </li>
+            </a>
+          )
+        })}
       </ul>
     </div>
   )
