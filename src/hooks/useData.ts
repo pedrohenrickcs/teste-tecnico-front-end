@@ -7,10 +7,14 @@ import { ContentProfile } from '@/types/Profile'
 
 export const useData = () => {
   const [user, setUser] = useState<string>('')
-  const [data, setData] = useState<{
-    profile: ContentProfile
-    repos: ContentRepo[]
-  } | null>(null)
+  const [data, setData] = useState<
+    | {
+        profile: ContentProfile
+        repos: ContentRepo[]
+      }
+    | null
+    | []
+  >([])
 
   const [loading, setLoading] = useState<boolean>(false)
 

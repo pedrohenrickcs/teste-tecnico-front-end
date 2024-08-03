@@ -11,5 +11,5 @@ export type ContentRepo = {
 
 export type RepoProps = {
   repos: ContentRepo[]
-  profile: ContentProfile[]
+  profile: ContentProfile
 }
