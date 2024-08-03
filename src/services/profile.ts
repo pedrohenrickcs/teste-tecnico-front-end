@@ -1,8 +1,8 @@
 import { api } from './api'
 
-export const getRepos = async (username: string) => {
+export const getProfile = async (username: string) => {
   try {
-    const response = await api.get(`/${username}/repos`, {
+    const response = await api.get(`/${username}`, {
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
       },

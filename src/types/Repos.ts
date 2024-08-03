@@ -1,3 +1,5 @@
+import { ContentProfile } from './Profile'
+
 export type ContentRepo = {
   id: number
   name: string
@@ -8,5 +10,6 @@ export type ContentRepo = {
 }
 
 export type RepoProps = {
-  data: ContentRepo[]
+  repos: ContentRepo[]
+  profile: ContentProfile[]
 }

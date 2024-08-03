@@ -1,8 +1,12 @@
 import Icon from '@/components/icons/icons'
 import { IconsEnum } from '@/enums/IconsEnum'
-import { RepoProps } from '@/types/Repos'
+import { ContentRepo } from '@/types/Repos'
 
-export const Repos = ({ data }: RepoProps) => {
+export type ReposProps = {
+  repos: ContentRepo[]
+}
+
+export const Repos = ({ repos }: ReposProps) => {
   const languageColors: { [key: string]: string } = {
     TypeScript: '#3276C6',
     JavaScript: '#F5DA79',
@@ -10,12 +14,12 @@ export const Repos = ({ data }: RepoProps) => {
   }
 
   return (
-    <div className="w-full md:w-1/2">
-      <h2 className="text-primary-color text-xl font-semibold mb-4">
+    <div className="w-full md:w-[70%]">
+      <h2 className="text-primary-color text-xl font-semibold mb-4 mt-4 md:mt-0">
         Repositórios
       </h2>
       <ul className="space-y-4">
-        {data.map((repo) => {
+        {repos?.map((repo) => {
           const color = languageColors[repo.language] || '#CCCCCC'
 
           return (
@@ -24,6 +28,7 @@ export const Repos = ({ data }: RepoProps) => {
                 href={repo.html_url}
                 className="flex w-full text-lg font-semibold"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <li className="w-full border border-border-and-line text-gray-neutral p-4 rounded">
                   {repo.name}
@@ -36,7 +41,9 @@ export const Repos = ({ data }: RepoProps) => {
                       style={{ backgroundColor: color }}
                     ></span>
                     <span>{repo.language}</span>
-                    <span className="pl-6">{repo.pushed_at}</span>
+                    <span className="pl-6">
+                      {new Date(repo.pushed_at).toLocaleDateString()}
+                    </span>
                   </p>
                 </li>
               </a>

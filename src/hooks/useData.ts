@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react'
-import { getRepos } from '../services/repos'
-import { ContentRepo } from '@/types/Repos'
+import { getRepos } from '@/services/repos'
+import { getProfile } from '@/services/profile'
 
-export const useRepos = () => {
+import { ContentRepo } from '@/types/Repos'
+import { ContentProfile } from '@/types/Profile'
+
+export const useData = () => {
   const [user, setUser] = useState<string>('')
-  const [data, setData] = useState<ContentRepo[]>([])
+  const [data, setData] = useState<{
+    profile: ContentProfile
+    repos: ContentRepo[]
+  } | null>(null)
+
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
@@ -14,9 +21,13 @@ export const useRepos = () => {
           setLoading(true)
           try {
             const repos = await getRepos(user)
-            setData(repos)
+            const profile = await getProfile(user)
+            setData({
+              repos,
+              profile,
+            })
           } catch (error) {
-            console.error('Erro ao buscar repositórios:', error)
+            console.error('Erro ao buscar dados:', error)
           } finally {
             setLoading(false)
           }
@@ -24,6 +35,7 @@ export const useRepos = () => {
         fetchData()
       }
     }, 500)
+
     return () => clearTimeout(delayDebounceFn)
   }, [user])
 
