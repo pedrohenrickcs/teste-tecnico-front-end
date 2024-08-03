@@ -12,7 +12,7 @@ const SearchUser = () => {
         </h3>
       </div>
       <Image
-        src="/img_01.png"
+        src="/assets/img_01.png"
         width={230}
         height={230}
         alt="Procure pelo Nome ou Nome de Usuário"

@@ -10,12 +10,13 @@ import { RepoProps } from '@/types/Repos'
 
 export default function Home() {
   const { setUser, data, loading } = useData()
+  const showSearchUser = !loading && Array.isArray(data) && data.length === 0
 
   return (
     <main className="flex flex-col items-center justify-between">
       <Header setUser={setUser} />
 
-      {!loading && data === null && <SearchUser />}
+      {showSearchUser && <SearchUser />}
 
       {loading ? (
         <Loading />
@@ -24,7 +25,7 @@ export default function Home() {
         data !== null && (
           <div className="flex w-full my-6 px-6 flex-col justify-between md:flex-row">
             <Profile profile={(data as RepoProps).profile} />
-            <Repos repos={(data as RepoProps).repos} />
+            <Repos repos={(data as RepoProps).repos} title="Respositórios" />
           </div>
         )
       )}

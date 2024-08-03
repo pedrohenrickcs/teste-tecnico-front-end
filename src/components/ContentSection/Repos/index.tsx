@@ -1,12 +1,19 @@
+import Title from '@/components/common/Title'
 import Icon from '@/components/icons/icons'
+import { useFavorites } from '@/context/FavoritesContext'
 import { IconsEnum } from '@/enums/IconsEnum'
 import { ContentRepo } from '@/types/Repos'
 
 export type ReposProps = {
   repos: ContentRepo[]
+  title: string
 }
 
-export const Repos = ({ repos }: ReposProps) => {
+export const Repos = ({ repos, title }: ReposProps) => {
+  const { favorites, addFavorite, removeFavorite } = useFavorites()
+  const isFavorite = (repoId: number) =>
+    favorites.some((repo) => repo.id === repoId)
+
   const languageColors: { [key: string]: string } = {
     TypeScript: '#3276C6',
     JavaScript: '#F5DA79',
@@ -15,12 +22,11 @@ export const Repos = ({ repos }: ReposProps) => {
 
   return (
     <div className="w-full md:w-[70%]">
-      <h2 className="text-primary-color text-xl font-semibold mb-4 mt-4 md:mt-0">
-        Repositórios
-      </h2>
+      <Title text={title} />
       <ul className="space-y-4">
         {repos?.map((repo) => {
           const color = languageColors[repo.language] || '#CCCCCC'
+          const isFav = isFavorite(repo.id)
 
           return (
             <div key={repo.id} className="relative">
@@ -47,8 +53,13 @@ export const Repos = ({ repos }: ReposProps) => {
                   </p>
                 </li>
               </a>
-              <div className="absolute right-4 top-4 cursor-pointer">
-                <Icon name={IconsEnum.HeartO} />
+              <div
+                className="absolute right-4 top-4 cursor-pointer"
+                onClick={() =>
+                  isFav ? removeFavorite(repo.id) : addFavorite(repo)
+                }
+              >
+                <Icon name={isFav ? IconsEnum.Heart : IconsEnum.HeartO} />
               </div>
             </div>
           )

@@ -1,5 +1,6 @@
 import Icon from '@/components/icons/icons'
 import { IconsEnum } from '@/enums/IconsEnum'
+import Link from 'next/link'
 import { ChangeEvent } from 'react'
 
 export type HeaderProps = {
@@ -25,10 +26,13 @@ const Header: React.FC<HeaderProps> = ({ setUser }) => {
             className="fill-placeholder absolute right-8 top-7"
           />
         </div>
-        <button className="bg-primary-color text-white-text p-5 flex items-center">
+        <Link
+          href="/favoritos"
+          className="bg-primary-color text-white-text p-5 flex items-center"
+        >
           <Icon name={IconsEnum.HeartO} className="fill-white-text mr-2" />
           Favoritos
-        </button>
+        </Link>
       </div>
     </header>
   )
