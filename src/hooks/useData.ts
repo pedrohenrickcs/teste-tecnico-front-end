@@ -19,8 +19,6 @@ export const useData = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [hasSearched, setHasSearched] = useState<boolean>(false)
 
-  console.log('user', user)
-
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (user) {
