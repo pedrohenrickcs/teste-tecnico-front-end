@@ -53,14 +53,25 @@ export const Repos = ({ repos, title }: ReposProps) => {
                   </p>
                 </li>
               </a>
-              <div
-                className="absolute right-4 top-4 cursor-pointer"
-                onClick={() =>
-                  isFav ? removeFavorite(repo.id) : addFavorite(repo)
-                }
-              >
-                <Icon name={isFav ? IconsEnum.Heart : IconsEnum.HeartO} />
-              </div>
+              {isFav ? (
+                <div
+                  className="absolute right-4 top-4 cursor-pointer border border-primary-color rounded-full p-3"
+                  onClick={() =>
+                    isFav ? removeFavorite(repo.id) : addFavorite(repo)
+                  }
+                >
+                  <Icon name={IconsEnum.Heart} className="fill-primary-color" />
+                </div>
+              ) : (
+                <div
+                  className="absolute right-4 top-4 cursor-pointer border border-white-background-matte bg-white-background-matte rounded-full p-3"
+                  onClick={() =>
+                    isFav ? removeFavorite(repo.id) : addFavorite(repo)
+                  }
+                >
+                  <Icon name={IconsEnum.HeartO} className="fill-placeholder" />
+                </div>
+              )}
             </div>
           )
         })}
