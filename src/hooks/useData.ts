@@ -17,12 +17,16 @@ export const useData = () => {
   >([])
 
   const [loading, setLoading] = useState<boolean>(false)
+  const [hasSearched, setHasSearched] = useState<boolean>(false)
+
+  console.log('user', user)
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (user) {
         const fetchData = async () => {
           setLoading(true)
+          setHasSearched(true)
           try {
             const repos = await getRepos(user)
             const profile = await getProfile(user)
@@ -30,6 +34,8 @@ export const useData = () => {
               repos,
               profile,
             })
+
+            setHasSearched(false)
           } catch (error) {
             console.error('Erro ao buscar dados:', error)
           } finally {
@@ -43,5 +49,5 @@ export const useData = () => {
     return () => clearTimeout(delayDebounceFn)
   }, [user])
 
-  return { user, setUser, data, loading }
+  return { user, setUser, data, loading, hasSearched }
 }

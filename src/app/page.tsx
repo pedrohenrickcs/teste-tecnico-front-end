@@ -4,19 +4,35 @@ import Header from '@/components/layout/Header'
 import Loading from '@/components/common/Loading'
 import { Repos } from '@/components/ContentSection/Repos'
 import { Profile } from '@/components/ContentSection/Profile'
-import SearchUser from '@/components/SearchUser'
 import { useData } from '@/hooks/useData'
 import { RepoProps } from '@/types/Repos'
+import { SearchInfo } from '@/components/SearchInfo'
 
 export default function Home() {
-  const { setUser, data, loading } = useData()
-  const showSearchUser = !loading && Array.isArray(data) && data.length === 0
+  const { user, setUser, data, loading, hasSearched } = useData()
+  const showSearchInfo = (!loading && Array.isArray(data)) || user === ''
+  const showSearchEmpty = !loading && hasSearched
 
   return (
     <main className="flex flex-col items-center justify-between">
       <Header setUser={setUser} />
 
-      {showSearchUser && <SearchUser />}
+      {showSearchEmpty && (
+        <SearchInfo
+          termSearch={`"${user}"`}
+          title="Nenhum usuário encontrado"
+          description="Verifique se a escrita está correta ou tente novamente"
+          imageSrc="/assets/img_02.png"
+        />
+      )}
+
+      {showSearchInfo && (
+        <SearchInfo
+          title="Procure pelo Nome ou Nome de Usuário"
+          description="Encontre os repositórios de algum usuário digitando no campo acima"
+          imageSrc="/assets/img_01.png"
+        />
+      )}
 
       {loading ? (
         <Loading />
