@@ -9,13 +9,16 @@ import { RepoProps } from '@/types/Repos'
 import { SearchInfo } from '@/components/SearchInfo'
 
 export default function Home() {
-  const { user, setUser, data, loading, hasSearched } = useData()
-  const showSearchInfo = (!loading && Array.isArray(data)) || user === ''
-  const showSearchEmpty = !loading && hasSearched
+  const { user, setUser, data, loading, hasSearched, setHasSearched } =
+    useData()
+
+  const isDataArray = Array.isArray((data as RepoProps)?.repos)
+  const showSearchEmpty = !loading && hasSearched && !isDataArray
+  const showSearchInfo = !loading && !hasSearched
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <Header setUser={setUser} />
+      <Header setUser={setUser} setHasSearched={setHasSearched} />
 
       {showSearchEmpty && (
         <SearchInfo
@@ -34,17 +37,14 @@ export default function Home() {
         />
       )}
 
-      {loading ? (
-        <Loading />
-      ) : (
-        Array.isArray(data) === false &&
-        data !== null && (
-          <div className="flex w-full my-6 px-6 flex-col justify-between md:flex-row">
-            <Profile profile={(data as RepoProps).profile} />
-            <Repos repos={(data as RepoProps).repos} title="Respositórios" />
-          </div>
-        )
+      {!loading && isDataArray && (data as RepoProps)?.repos.length > 0 && (
+        <div className="flex w-full my-6 px-6 flex-col justify-between md:flex-row">
+          <Profile profile={(data as RepoProps)?.profile} />
+          <Repos repos={(data as RepoProps)?.repos} title="Repositórios" />
+        </div>
       )}
+
+      {loading && <Loading />}
     </main>
   )
 }

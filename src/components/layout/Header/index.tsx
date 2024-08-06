@@ -5,6 +5,7 @@ import { ChangeEvent } from 'react'
 
 export type HeaderProps = {
   setUser: React.Dispatch<React.SetStateAction<string>>
+  setHasSearched?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Header: React.FC<HeaderProps> = ({ setUser }) => {

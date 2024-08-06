@@ -14,7 +14,7 @@ export const useData = () => {
       }
     | null
     | []
-  >([])
+  >(null)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [hasSearched, setHasSearched] = useState<boolean>(false)
@@ -32,8 +32,6 @@ export const useData = () => {
               repos,
               profile,
             })
-
-            setHasSearched(false)
           } catch (error) {
             console.error('Erro ao buscar dados:', error)
           } finally {
@@ -41,11 +39,14 @@ export const useData = () => {
           }
         }
         fetchData()
+      } else {
+        setData(null)
+        setHasSearched(false)
       }
     }, 500)
 
     return () => clearTimeout(delayDebounceFn)
   }, [user])
 
-  return { user, setUser, data, loading, hasSearched }
+  return { user, setUser, data, loading, hasSearched, setHasSearched }
 }
