@@ -49,8 +49,13 @@ export const Repos = ({ repos, title }: ReposProps) => {
                       style={{ backgroundColor: color }}
                     ></span>
                     <span>{repo.language}</span>
-                    <span className="pl-6 flex md:inline-flex" mt-1>
-                      Updated on {new Date(repo.pushed_at).toLocaleDateString()}
+                    <span className="pl-6 flex md:inline-flex mt-1">
+                      Updated on{' '}
+                      {new Date(repo.pushed_at).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric',
+                      })}
                     </span>
                   </p>
                 </li>
