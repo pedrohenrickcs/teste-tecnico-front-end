@@ -1,7 +1,6 @@
 import Icon from '@/components/icons/icons'
-
-import { HeaderProps } from '@/components/layout/Header'
 import { IconsEnum } from '@/enums/IconsEnum'
+import { HeaderProps } from '@/types/Header'
 import { ChangeEvent } from 'react'
 
 const Input: React.FC<HeaderProps> = ({ setUser }) => {

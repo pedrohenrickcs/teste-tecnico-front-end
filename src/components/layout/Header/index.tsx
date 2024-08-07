@@ -2,11 +2,7 @@ import Link from 'next/link'
 import Icon from '@/components/icons/icons'
 import { IconsEnum } from '@/enums/IconsEnum'
 import Input from '@/components/common/Input'
-
-export type HeaderProps = {
-  setUser?: React.Dispatch<React.SetStateAction<string>>
-  setHasSearched?: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { HeaderProps } from '@/types/Header'
 
 export const Header: React.FC<HeaderProps> = ({ setUser }) => {
   return (

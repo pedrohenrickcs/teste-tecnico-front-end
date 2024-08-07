@@ -1,10 +1,6 @@
 import { useMobile } from '@/hooks/useMobile'
-import { ContentProfile } from '@/types/Profile'
+import { ProfileProps } from '@/types/Profile'
 import Image from 'next/image'
-
-export type ProfileProps = {
-  profile: ContentProfile
-}
 
 export const Profile = ({ profile }: ProfileProps) => {
   const isMobile = useMobile()

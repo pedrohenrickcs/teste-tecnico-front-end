@@ -1,6 +1,4 @@
-export type TextType = {
-  text?: string
-}
+import { TextType } from '@/types/Title'
 
 const Title = ({ text }: TextType) => {
   return (

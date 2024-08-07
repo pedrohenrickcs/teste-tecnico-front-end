@@ -1,14 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 import Input from '@/components/common/Input'
-
-export type SearchProps = {
-  termSearch?: string
-  title: string
-  description: string
-  imageSrc: string
-  setUser?: React.Dispatch<React.SetStateAction<string>>
-}
+import { SearchProps } from '@/types/SearchInfo'
 
 export const SearchInfo: FC<SearchProps> = ({
   termSearch,

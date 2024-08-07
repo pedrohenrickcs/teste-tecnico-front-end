@@ -3,12 +3,7 @@ import Icon from '@/components/icons/icons'
 import { useFavorites } from '@/context/FavoritesContext'
 import { IconsEnum } from '@/enums/IconsEnum'
 import { useMobile } from '@/hooks/useMobile'
-import { ContentRepo } from '@/types/Repos'
-
-export type ReposProps = {
-  repos: ContentRepo[]
-  title: string
-}
+import { ReposProps } from '@/types/Repos'
 
 export const Repos = ({ repos, title }: ReposProps) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites()

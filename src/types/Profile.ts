@@ -5,3 +5,7 @@ export type ContentProfile = {
   login: string
   name: string
 }
+
+export type ProfileProps = {
+  profile: ContentProfile
+}

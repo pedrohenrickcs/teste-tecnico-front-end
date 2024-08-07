@@ -1,5 +1,7 @@
+import { IconsEnum } from '@/enums/IconsEnum'
+
 export interface IconType {
-  name: string
+  name: IconsEnum
   size?: number
   color?: string
   className?: string

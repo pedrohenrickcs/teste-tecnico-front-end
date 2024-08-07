@@ -13,3 +13,8 @@ export type RepoProps = {
   repos: ContentRepo[]
   profile: ContentProfile
 }
+
+export type ReposProps = {
+  repos: ContentRepo[]
+  title: string
+}
