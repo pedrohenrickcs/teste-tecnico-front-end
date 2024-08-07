@@ -4,6 +4,7 @@ import Heart from './heart'
 import HeartO from './heart-o'
 import Star from './star'
 import CodeFork from './code-fork'
+import User from './user'
 
 const Icon = ({ name, size, color, className }: IconType) => {
   switch (name) {
@@ -17,6 +18,8 @@ const Icon = ({ name, size, color, className }: IconType) => {
       return <Star size={size} color={color} className={className} />
     case 'code-fork':
       return <CodeFork size={size} color={color} className={className} />
+    case 'user':
+      return <User size={size} color={color} className={className} />
     default:
       return null
   }

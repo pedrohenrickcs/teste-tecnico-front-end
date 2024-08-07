@@ -2,6 +2,7 @@ import Title from '@/components/common/Title'
 import Icon from '@/components/icons/icons'
 import { useFavorites } from '@/context/FavoritesContext'
 import { IconsEnum } from '@/enums/IconsEnum'
+import { useMobile } from '@/hooks/useMobile'
 import { ContentRepo } from '@/types/Repos'
 
 export type ReposProps = {
@@ -13,6 +14,7 @@ export const Repos = ({ repos, title }: ReposProps) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites()
   const isFavorite = (repoId: number) =>
     favorites.some((repo) => repo.id === repoId)
+  const isMobile = useMobile()
 
   const languageColors: { [key: string]: string } = {
     TypeScript: '#3276C6',
@@ -47,29 +49,37 @@ export const Repos = ({ repos, title }: ReposProps) => {
                       style={{ backgroundColor: color }}
                     ></span>
                     <span>{repo.language}</span>
-                    <span className="pl-6">
-                      {new Date(repo.pushed_at).toLocaleDateString()}
+                    <span className="pl-6 flex md:inline-flex" mt-1>
+                      Updated on {new Date(repo.pushed_at).toLocaleDateString()}
                     </span>
                   </p>
                 </li>
               </a>
               {isFav ? (
                 <div
-                  className="absolute right-4 top-4 cursor-pointer border border-primary-color rounded-full p-3"
+                  className="absolute cursor-pointer border border-primary-color rounded-full p-2 md:p-3 right-4 top-4"
                   onClick={() =>
                     isFav ? removeFavorite(repo.id) : addFavorite(repo)
                   }
                 >
-                  <Icon name={IconsEnum.Heart} className="fill-primary-color" />
+                  <Icon
+                    name={IconsEnum.Heart}
+                    size={isMobile ? 12 : 24}
+                    className="fill-primary-color"
+                  />
                 </div>
               ) : (
                 <div
-                  className="absolute right-4 top-4 cursor-pointer border border-white-background-matte bg-white-background-matte rounded-full p-3"
+                  className="absolute cursor-pointer border border-white-background-matte bg-white-background-matte rounded-full p-2 md:p-3 right-4 top-4"
                   onClick={() =>
                     isFav ? removeFavorite(repo.id) : addFavorite(repo)
                   }
                 >
-                  <Icon name={IconsEnum.HeartO} className="fill-placeholder" />
+                  <Icon
+                    name={IconsEnum.HeartO}
+                    size={isMobile ? 12 : 24}
+                    className="fill-placeholder"
+                  />
                 </div>
               )}
             </div>

@@ -1,4 +1,4 @@
-const Loading = () => {
+export const Loading = () => {
   return (
     <div
       role="status"
@@ -24,5 +24,3 @@ const Loading = () => {
     </div>
   )
 }
-
-export default Loading

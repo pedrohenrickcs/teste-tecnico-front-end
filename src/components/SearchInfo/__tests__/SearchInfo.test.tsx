@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import { SearchProps, SearchInfo } from '..'
+import { SearchInfo, SearchProps } from '..'
 
 describe('SearchInfo component', () => {
   const props: SearchProps = {

@@ -1,12 +1,13 @@
 'use client'
 
-import Header from '@/components/layout/Header'
-import Loading from '@/components/common/Loading'
+import { Header } from '@/components/layout/Header'
 import { Repos } from '@/components/ContentSection/Repos'
 import { Profile } from '@/components/ContentSection/Profile'
 import { useData } from '@/hooks/useData'
 import { RepoProps } from '@/types/Repos'
 import { SearchInfo } from '@/components/SearchInfo'
+import { Footer } from '@/components/layout/Footer'
+import { Loading } from '@/components/common/Loading'
 
 export default function Home() {
   const { user, setUser, data, loading, hasSearched, setHasSearched } =
@@ -26,6 +27,7 @@ export default function Home() {
           title="Nenhum usuário encontrado"
           description="Verifique se a escrita está correta ou tente novamente"
           imageSrc="/assets/img_02.png"
+          setUser={setUser}
         />
       )}
 
@@ -34,6 +36,7 @@ export default function Home() {
           title="Procure pelo Nome ou Nome de Usuário"
           description="Encontre os repositórios de algum usuário digitando no campo acima"
           imageSrc="/assets/img_01.png"
+          setUser={setUser}
         />
       )}
 
@@ -43,6 +46,8 @@ export default function Home() {
           <Repos repos={(data as RepoProps)?.repos} title="Repositórios" />
         </div>
       )}
+
+      <Footer />
 
       {loading && <Loading />}
     </main>

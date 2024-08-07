@@ -4,4 +4,5 @@ export enum IconsEnum {
   HeartO = 'heart-o',
   Star = 'star',
   CodeFork = 'code-fork',
+  User = 'user',
 }

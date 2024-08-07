@@ -1,32 +1,18 @@
+import Link from 'next/link'
 import Icon from '@/components/icons/icons'
 import { IconsEnum } from '@/enums/IconsEnum'
-import Link from 'next/link'
-import { ChangeEvent } from 'react'
+import Input from '@/components/common/Input'
 
 export type HeaderProps = {
-  setUser: React.Dispatch<React.SetStateAction<string>>
+  setUser?: React.Dispatch<React.SetStateAction<string>>
   setHasSearched?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Header: React.FC<HeaderProps> = ({ setUser }) => {
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUser(e.target.value)
-  }
-
+export const Header: React.FC<HeaderProps> = ({ setUser }) => {
   return (
     <header className="w-full">
-      <div className="border-b border-border-and-line flex justify-end md:justify-between">
-        <div className="flex w-full md:w-5/12 relative">
-          <input
-            placeholder="Buscar usuário"
-            className=" border border-border-and-line text-placeholder rounded b-width w-full md:w-full p-2 m-5 focus:outline-none"
-            onChange={handleInputChange}
-          />
-          <Icon
-            name={IconsEnum.Search}
-            className="fill-placeholder absolute right-8 top-7"
-          />
-        </div>
+      <div className="hidden md:flex border-b border-border-and-line justify-end md:justify-between">
+        <Input setUser={setUser} />
         <Link
           href="/favoritos"
           className="bg-primary-color text-white-text p-5 flex items-center"
@@ -38,5 +24,3 @@ const Header: React.FC<HeaderProps> = ({ setUser }) => {
     </header>
   )
 }
-
-export default Header
