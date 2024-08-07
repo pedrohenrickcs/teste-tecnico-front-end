@@ -10,7 +10,7 @@ export type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ setUser }) => {
   return (
-    <header className="w-full">
+    <header className="w-full fixed top-0 z-50 bg-white-background">
       <div className="hidden md:flex border-b border-border-and-line justify-end md:justify-between">
         <Input setUser={setUser} />
         <Link

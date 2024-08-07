@@ -41,7 +41,7 @@ export default function Home() {
       )}
 
       {!loading && isDataArray && (data as RepoProps)?.repos.length > 0 && (
-        <div className="flex w-full my-6 px-6 flex-col justify-between md:flex-row">
+        <div className="flex w-full my-8 md:my-28 px-6 flex-col justify-between md:flex-row">
           <Profile profile={(data as RepoProps)?.profile} />
           <Repos repos={(data as RepoProps)?.repos} title="Repositórios" />
         </div>

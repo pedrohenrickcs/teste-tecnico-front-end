@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Header from '@/components/layout/Header'
+import { Header } from '..'
 
 describe('Header component', () => {
   it('renders the search input, icon, and favorites link', () => {
