@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Loading from '@/components/common/Loading'
+import { Loading } from '..'
 
 describe('Loading component', () => {
   it('renders the loading spinner and text', () => {
