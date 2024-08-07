@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Technical Test
 
-## Getting Started
+[[English](README.md) | [Portuguese](README.pt.md)]
 
-First, run the development server:
+This is a Next.js 14 project configured with TypeScript, Tailwind CSS, Axios, and Jest.
+
+## Pre requisites
+
+Make sure you have Node.js installed on your machine.
+
+> node: v20.12.2
+
+## Installation
+
+Clone this repository:
+```bash
+git clone https://github.com/pedrohenrickcs/teste-tecnico-front-end.git
+```
+### Navigate to the project directory:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd teste-tecnico-front-end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install the dependencies:
+```bash
+npm install
+#ou
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### To start the development server, run the following command:
+```bash
+npm run dev
+# ou
+yarn dev
+# ou
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The project will be available at http://localhost:3000.
 
-## Learn More
+> Note: I left my token available, but if you have problems testing, just replace the GITHUB_TOKEN variable in the project's .env file, with the new token created.
 
-To learn more about Next.js, take a look at the following resources:
+## Available Scripts
+### In the project directory, you can run the following scripts:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+> dev: Starts the development server.
+> build: Compiles the project for production.
+> start: Starts the production server.
+> lint: Checks for linting issues.
+> test: Runs unit tests.
+> test:watch: Runs unit tests in watch mode.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Structure
+### The project folder structure is as follows:
+```bash
+├── public               # For storing static files
+├── src                  # Project root
+├── app/                 # Pages
+├── components/          # Reusable components
+  ├── common             # Common reusable utilities
+  ├── layout             # Interface structure components
+├── context/             # For managing and sharing global states
+├── enums/               # Stores sets of constant values
+├── hooks/               # Encapsulates reusable logic
+├── services/            # Centralizes API calls
+├── types/               # Stores TypeScript type definitions
+├── .gitignore           # Files to be ignored by Git
+├── jest.config.js       # Jest configurations
+├── next.config.js       # Next.js configurations
+├── package.json         # Project manifest file
+└── tsconfig.json        # TypeScript configurations
+└── tailwind.config      # Tailwind configurations
+```
+## Technologies Used
 
-## Deploy on Vercel
+```bash
+Next.js 14
+TypeScript
+Tailwind CSS
+Axios
+Jest
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment with Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To test, visit the URL: [teste-tecnico-front-end](https://teste-tecnico-front-end-omega.vercel.app/)
+
+---
+⌨️ with ❤️ by [Pedro Henrick](https://www.linkedin.com/in/pedro-henrickcs) 😊
